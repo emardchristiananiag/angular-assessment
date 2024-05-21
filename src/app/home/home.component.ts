@@ -12,9 +12,11 @@ import { AuthService } from '../auth.service';
 export class HomeComponent {
   constructor(private router: Router, private auth: AuthService) {}
 
-  logout() {
+  logout(event: Event) {
+    event.preventDefault();
     if(confirm("Are you sure you want to logout?")) {
       this.auth.logout();
+      this.router.navigate(['/']);
     }
   }
 }
